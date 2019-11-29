@@ -18,7 +18,6 @@ def create_lattice(optics_mode=default_optics_mode):
     # -- shortcut symbols --
     marker = _pyaccel.elements.marker
     drift = _pyaccel.elements.drift
-    rbend_sirius = _pyaccel.elements.rbend
     sextupole = _pyaccel.elements.sextupole
 
     # --- drift spaces ---
@@ -87,16 +86,16 @@ def create_lattice(optics_mode=default_optics_mode):
 
     # -- septa --
     ejesf = _segmented_models.setpum(
-        sept_name='EjeSeptF', dip_len=0.5773, dip_ang=-3.6,
+        dip_nam='EjeSeptF', dip_len=0.5773, dip_ang=-3.6,
         strengths=strengths)
     ejesg = _segmented_models.setpum(
-        sept_name='EjeSeptG', dip_len=0.5773, dip_ang=-3.6,
+        dip_nam='EjeSeptG', dip_len=0.5773, dip_ang=-3.6,
         strengths=strengths)
     injsg = _segmented_models.setpum(
-        sept_name='InjSeptG', dip_len=0.5773, dip_ang=+3.6,
+        dip_nam='InjSeptG', dip_len=0.5773, dip_ang=+3.6,
         strengths=strengths)
     injsf = _segmented_models.setpum(
-        sept_name='InjSeptF', dip_len=0.5773, dip_ang=+3.118,
+        dip_nam='InjSeptF', dip_len=0.5000, dip_ang=+3.118,
         strengths=strengths)
 
     # --- lines ---
@@ -138,76 +137,20 @@ def create_lattice(optics_mode=default_optics_mode):
 
 def get_optics_mode(optics_mode):
     twiss_at_start = _pyaccel.optics.Twiss.make_new(
-        beta=[9.321, 12.881], alpha=[-2.647, 2.000], etax=[0.231, 0.069])
+        beta=[7.906, 11.841], alpha=[-2.4231, 1.8796], etax=[0.21135, 0.06939])
     # -- selection of optics mode --
 
     if optics_mode == 'M1':
-        # Matched alpha and disp (betax_max = 40m)
+        # Unmatched optics at dipolar kicker (betax_max = 40m)
         strengths = {
-            'qf1a': 1.247810891477,
-            'qf1b': 2.269454982012,
-            'qd2': -3.095390628668,
-            'qf2': 2.478673710387,
-            'qf3': 2.48378256297,
-            'qd4a': -2.570893964278,
-            'qf4': 3.549734282477,
-            'qd4b': -2.209083568757,
-            'ejeseptf_kxl': 0.0,
-            'ejeseptf_kyl': 0.0,
-            'ejeseptf_ksxl': 0.0,
-            'ejeseptf_ksyl': 0.0,
-            'ejeseptg_kxl': 0.0,
-            'ejeseptg_kyl': 0.0,
-            'ejeseptg_ksxl': 0.0,
-            'ejeseptg_ksyl': 0.0,
-            'injseptg_kxl': 0.0,
-            'injseptg_kyl': 0.0,
-            'injseptg_ksxl': 0.0,
-            'injseptg_ksyl': 0.0,
-            'injseptf_kxl': 0.0,
-            'injseptf_kyl': 0.0,
-            'injseptf_ksxl': 0.0,
-            'injseptf_ksyl': 0.0,
-        }
-    elif optics_mode == 'M2':
-        # Mismatched optics @ NLK
-        strengths = {
-            'qf1a': 1.563599428323,
-            'qf1b': 2.303150061796,
-            'qd2': -2.95822108328,
-            'qf2': 2.815338463764,
-            'qf3': 2.433331684549,
-            'qd4a': -2.295731518617,
-            'qf4': 3.413868033048,
-            'qd4b': -2.230138095518,
-            'ejeseptf_kxl': 0.0,
-            'ejeseptf_kyl': 0.0,
-            'ejeseptf_ksxl': 0.0,
-            'ejeseptf_ksyl': 0.0,
-            'ejeseptg_kxl': 0.0,
-            'ejeseptg_kyl': 0.0,
-            'ejeseptg_ksxl': 0.0,
-            'ejeseptg_ksyl': 0.0,
-            'injseptg_kxl': 0.0,
-            'injseptg_kyl': 0.0,
-            'injseptg_ksxl': 0.0,
-            'injseptg_ksyl': 0.0,
-            'injseptf_kxl': 0.0,
-            'injseptf_kyl': 0.0,
-            'injseptf_ksxl': 0.0,
-            'injseptf_ksyl': 0.0,
-        }
-    elif optics_mode == 'M3':
-        # Matched optics (betax_max = 100m)
-        strengths = {
-            'qf1a': 0.801090058058,
-            'qf1b': 2.83641570018,
-            'qd2': -3.025223032377,
-            'qf2': 1.753256050021,
-            'qf3': 2.353655122791,
-            'qd4a': -2.670345064247,
-            'qf4': 3.530990934212,
-            'qd4b': -2.073377200462,
+            'qf1a': 1.814573972458,
+            'qf1b': 2.097583535652,
+            'qd2': -2.872960628905,
+            'qf2': 2.804180421441,
+            'qf3': 2.55050231931,
+            'qd4a': -2.358451356072,
+            'qf4': 3.388995991451,
+            'qd4b': -2.209843757138,
             'ejeseptf_kxl': 0.0,
             'ejeseptf_kyl': 0.0,
             'ejeseptf_ksxl': 0.0,

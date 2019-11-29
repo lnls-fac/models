@@ -194,7 +194,7 @@ def quadrupole_q20(fam_name, strength, simplified=False):
     return model
 
 
-def setpum(sept_name, dip_len, dip_ang, strengths, nseg=6):
+def setpum(dip_nam, dip_len, dip_ang, strengths, nseg=6):
     if nseg < 2:
         raise Exception('Number of segments must be >= 2.')
     rbend_sirius = _pyaccel.elements.rbend
@@ -205,15 +205,13 @@ def setpum(sept_name, dip_len, dip_ang, strengths, nseg=6):
     polya = [0, 0, 0]
     polyb = [0, 0, 0]
 
-    dip_nam = sept_name
-    matrix_name = sept_name + 'M66'
-    dip_len = dip_len
+    matrix_name = dip_nam + 'M66'
     dip_ang = dip_ang * deg_2_rad
 
-    dip_kxl = strengths[sept_name.lower()+'_kxl']
-    dip_kyl = strengths[sept_name.lower()+'_kyl']
-    dip_ksxl = strengths[sept_name.lower()+'_ksxl']
-    dip_ksyl = strengths[sept_name.lower()+'_ksyl']
+    dip_kxl = strengths[dip_nam.lower()+'_kxl']
+    dip_kyl = strengths[dip_nam.lower()+'_kyl']
+    dip_ksxl = strengths[dip_nam.lower()+'_ksxl']
+    dip_ksyl = strengths[dip_nam.lower()+'_ksyl']
 
     seg_len = dip_len / nseg
     seg_ang = dip_ang / nseg
@@ -252,9 +250,9 @@ def setpum(sept_name, dip_len, dip_ang, strengths, nseg=6):
             segs.append(_pyaccel.elements.Element(element))
             segs.append(_pyaccel.elements.Element(matrix))
 
-    bgn = marker('b'+sept_name)  # marker at the beginning of thin septum
-    mdl = marker('m'+sept_name)  # marker at the center of thin septum
-    fin = marker('e'+sept_name)  # marker at the end of thin septum
+    bgn = marker('b'+dip_nam)  # marker at the beginning of thin septum
+    mdl = marker('m'+dip_nam)  # marker at the center of thin septum
+    fin = marker('e'+dip_nam)  # marker at the end of thin septum
     segs = segs[:len(segs)//2] + [mdl] + segs[len(segs)//2:]
     model = [bgn, septe] + segs + [septs, fin]
     return model
