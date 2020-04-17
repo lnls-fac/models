@@ -232,7 +232,7 @@ def get_family_data(lattice):
     section_map = get_section_name_mapping(lattice)
 
     def get_idx(x):
-        return x[0]
+        return x[len(x)//2]
     # get_idx = lambda x: x[0]
 
     # fill the data dictionary with index info ######
@@ -306,8 +306,15 @@ def get_family_data(lattice):
     data['B1B2-1'] = sorted(data['B1']+data['B2'], key=get_idx)
     data['B1B2-2'] = sorted(data['B1']+data['B2'], key=get_idx)
 
+    # all dipoles indices
+    data['BN'] = sorted(data['B1']+data['B2']+data['BC'], key=get_idx)
+
     # PingH (in the model the same as InjDpKckr)
     data['PingH'] = sorted(data['InjDpKckr'], key=get_idx)
+
+    girder = get_girder_data(lattice)
+    if girder is not None:
+        data['girder'] = girder
 
     def f(x):
         return '{0:d}'.format(x)
@@ -334,10 +341,6 @@ def get_family_data(lattice):
         new_data[key] = {'index': idx, 'subsection': secs, 'instance': num}
 
     # girders
-    girder = get_girder_data(lattice)
-    if girder is not None:
-        new_data['girder'] = girder
-
     return new_data
 
 
@@ -347,15 +350,13 @@ def get_girder_data(lattice):
     List of dicts, one for each girder, containing index of elements in that
     girder.
     """
-    data = []
     gir = _pyaccel.lattice.find_indices(lattice, 'fam_name', 'girder')
-    if len(gir) == 0:
+    if not gir:
         return None
-
     gir_ini = gir[0::2]
     gir_end = gir[1::2]
-    for i in range(len(gir_ini)):
-        idx = list(range(gir_ini[i], gir_end[i]+1))
-        data.append(dict({'index': idx}))
 
+    data = []
+    for ini, end in zip(gir_ini, gir_end):
+        data.append(list(range(ini, end+1)))
     return data

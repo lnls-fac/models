@@ -168,6 +168,62 @@ def get_optics_mode(optics_mode):
             'injseptf_ksxl': 0.0,
             'injseptf_ksyl': 0.0,
         }
+    elif optics_mode == 'M2':
+        # Matched optics at NLK (betax_max = 50m)
+        strengths = {
+            'qf1a': 1.735233574051,
+            'qf1b': 2.12529241014,
+            'qd2': -2.812501500682,
+            'qf2': 2.633574334355,
+            'qf3': 2.551775791502,
+            'qd4a': -2.380437595286,
+            'qf4': 3.4542604055,
+            'qd4b': -2.256751079688,
+            'ejeseptf_kxl': 0.0,
+            'ejeseptf_kyl': 0.0,
+            'ejeseptf_ksxl': 0.0,
+            'ejeseptf_ksyl': 0.0,
+            'ejeseptg_kxl': 0.0,
+            'ejeseptg_kyl': 0.0,
+            'ejeseptg_ksxl': 0.0,
+            'ejeseptg_ksyl': 0.0,
+            'injseptg_kxl': 0.0,
+            'injseptg_kyl': 0.0,
+            'injseptg_ksxl': 0.0,
+            'injseptg_ksyl': 0.0,
+            'injseptf_kxl': 0.0,
+            'injseptf_kyl': 0.0,
+            'injseptf_ksxl': 0.0,
+            'injseptf_ksyl': 0.0,
+        }
+    elif optics_mode == 'M3':
+        # Matched optics at NLK (betax_max = 100m)
+        strengths = {
+            'qf1a': 1.098864280202,
+            'qf1b': 2.712115128587,
+            'qd2': -3.167088032024,
+            'qf2': 2.070598787666,
+            'qf3': 2.442389453529,
+            'qd4a': -2.78498981744,
+            'qf4': 3.538053654861,
+            'qd4b': -2.197935861131,
+            'ejeseptf_kxl': 0.0,
+            'ejeseptf_kyl': 0.0,
+            'ejeseptf_ksxl': 0.0,
+            'ejeseptf_ksyl': 0.0,
+            'ejeseptg_kxl': 0.0,
+            'ejeseptg_kyl': 0.0,
+            'ejeseptg_ksxl': 0.0,
+            'ejeseptg_ksyl': 0.0,
+            'injseptg_kxl': 0.0,
+            'injseptg_kyl': 0.0,
+            'injseptg_ksxl': 0.0,
+            'injseptg_ksyl': 0.0,
+            'injseptf_kxl': 0.0,
+            'injseptf_kyl': 0.0,
+            'injseptf_ksxl': 0.0,
+            'injseptf_ksyl': 0.0,
+        }
     else:
         Exception('Invalid TS optics mode: ' + optics_mode)
 

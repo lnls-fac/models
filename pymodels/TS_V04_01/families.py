@@ -125,6 +125,13 @@ def get_family_data(lattice):
         idx.extend(data[fam])
     data['CH'] = sorted(idx, key=lambda x: x[0])
 
+    # cv - slow horizontal correctors (inside quadrupoles)
+    idx = []
+    fams = ['QF1A', 'QD2', 'QD4A', 'QD4B', 'CV']
+    for fam in fams:
+        idx.extend(data[fam])
+    data['CV'] = sorted(idx, key=lambda x: x[0])
+
     # now organize the data dictionary:
     new_data = dict()
     for key, idx in data.items():

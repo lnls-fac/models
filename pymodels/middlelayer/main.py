@@ -4,7 +4,7 @@ from collections import OrderedDict
 import numpy as np
 
 from siriuspy.epics import PV as _PV
-from siriuspy.factory import NormalizerFactory as _NormFact
+from siriuspy.magnet.factory import NormalizerFactory as _NormFact
 
 
 class ModelElement():
