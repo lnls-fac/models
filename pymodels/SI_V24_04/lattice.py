@@ -522,7 +522,7 @@ def set_num_integ_steps(the_ring):
 def set_vacuum_chamber(the_ring, mode=default_optics_mode):
     """Set vacuum chamber for all elements."""
     # vchamber = [hmin, hmax, vmin, vmax] (meter)
-    bc_vchamber = [-0.012, 0.012, -0.004, 0.004]
+    bc_vchamber = [-0.004, 0.004, -0.004, 0.004]
     other_vchamber = [-0.012, 0.012, -0.012, 0.012]
     idb_vchamber = [-0.004, 0.004, -0.00225, 0.00225]
     ida_vchamber = [-0.012, 0.012, -0.004, 0.004]
