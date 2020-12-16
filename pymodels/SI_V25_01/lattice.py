@@ -344,9 +344,7 @@ def create_lattice(mode=default_optics_mode, simplified=False):
 
     # -- insertion devices --
 
-    fname = '/home/facs/repos/MatlabMiddleLayer/Release' + \
-        '/lnls/fac_scripts/sirius/insertion_devices/id_modelling/' + \
-            'APU22/APUKyma22mm_kickmap_shift_0.txt'
+    fname = 'APU22/APUKyma22mm_kickmap_shift_0.txt'
     APU22H_kicktable = _pyacc_ele.kickmap(
         fam_name='APU22_kickmap',
         kicktable_fname=fname,
